@@ -1,0 +1,15 @@
+# Dependencies (Vite & Express)
+**/node_modules/
+**/dist/
+
+# Local Environment Variables & Secrets
+**/.env
+
+# Local Databases (SQLite / Prisma)
+**/*.db
+**/*.db-journal
+
+# AI Agent Caches & Workspace Context Logs
+**/.agents/
+**/.claude/
+**/.windsurf/
