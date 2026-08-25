@@ -27,3 +27,37 @@ The application will allow users to browse products, view product details, add p
 ## Project Status
 
 Phase 1 – Conception and initial project setup.
+
+## Backend
+
+The backend is built with Node.js and Express.
+
+### API Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | /products | Get all products |
+| GET | /products/:id | Get a single product |
+| POST | /orders | Create an order |
+| GET | /orders/:id | Get an order and its items |
+
+### Database
+
+TechHub uses PostgreSQL.
+
+The database contains:
+- categories
+- products
+- orders
+- order_items
+
+## Setup
+
+1. Install dependencies:
+
+```bash
+npm install
+
+2. Create a .env file containing:
+DATABASE_URL="your-postgresql-connection-string"
+

@@ -1,0 +1,33 @@
+import { Link } from "react-router-dom";
+
+const ProductCard = ({ product }) => {
+  return (
+    <div className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+      <Link to={`/products/${product.id}`}>
+        <img
+          src={product.image_url}
+          alt={product.name}
+          className="h-48 w-full rounded-lg object-cover"
+        />
+        <div className="mt-4">
+          <p className="text-sm text-gray-500">{product.category}</p>
+
+          <h3 className="mt-1 text-lg font-semibold text-gray-900">
+            {product.name}
+          </h3>
+
+          <p className="mt-2 text-gray-600">{product.description}</p>
+
+          <p className="mt-4 text-xl font-bold text-gray-900">
+            ₦{Number(product.price).toLocaleString()}
+          </p>
+        </div>
+      </Link>
+      <button className="mt-4 w-full rounded-lg bg-black px-4 py-2 font-medium text-white hover:bg-gray-800">
+        Add to Cart
+      </button>
+    </div>
+  );
+};
+
+export default ProductCard;
