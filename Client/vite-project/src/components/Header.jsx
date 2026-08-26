@@ -16,7 +16,7 @@ const Header = () => {
           to="/cart"
           className="rounded-lg bg-black px-4 py-2 text-sm font-semibold text-white"
         >
-          Cart {cartCount === 0 ? "" : `(${cartCount})`}
+          CART {cartCount === 0 ? "" : `(${cartCount})`}
         </Link>
       </div>
     </header>
