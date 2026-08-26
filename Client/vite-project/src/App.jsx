@@ -6,6 +6,7 @@ import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
 import Header from "./components/Header";
 import CartNotification from "./components/cartNotification";
+import CheckOut from "./components/CheckOut";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <Route path="/" element={<ProductList />} />
             <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<CheckOut />} />
           </Routes>
           <CartNotification />
         </div>
