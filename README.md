@@ -1,6 +1,6 @@
-# TechNest
+# TechHub
 
-TechNest is a web-based e-commerce application for purchasing consumer
+TechHub is a web-based e-commerce application for purchasing consumer
 electronics and computer accessories.
 
 The application will allow users to browse products, view product details,
@@ -118,7 +118,7 @@ The backend is built with Node.js and Express.
 
 ### Database
 
-TechNest uses PostgreSQL.
+TechHub uses PostgreSQL.
 
 The database contains:
 
@@ -138,7 +138,6 @@ the `pg` (`node-postgres`) package.
 
 ```bash
 npm install
-
 
 2. Create a .env file
 DATABASE_URL="your-postgresql-connection-string"
