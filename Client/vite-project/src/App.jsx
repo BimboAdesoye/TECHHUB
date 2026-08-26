@@ -7,7 +7,7 @@ import Cart from "./components/Cart";
 import Header from "./components/Header";
 import CartNotification from "./components/cartNotification";
 import CheckOut from "./components/CheckOut";
-
+import OrderSummary from "./components/OrderSummary";
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
             <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<CheckOut />} />
+            <Route path="/orders/:id" element={<OrderSummary />} />
           </Routes>
           <CartNotification />
         </div>

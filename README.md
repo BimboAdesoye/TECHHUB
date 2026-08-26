@@ -73,6 +73,12 @@ place simulated orders.
 - Cart subtotal and total calculation implemented
 - Responsive cart layout implemented
 - Add-to-cart notification implemented with animation
+- Responsive checkout page
+- Order creation API
+- Server-side order total calculation
+- Order and order-item persistence in PostgreSQL
+- Order confirmation/summary page
+- Cart clearing after successful order creation
 
 ### Phase 4 – Integration
 

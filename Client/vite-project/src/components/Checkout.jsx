@@ -1,8 +1,40 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import axios from "axios";
+import { useState } from "react";
 
 function CheckOut() {
-  const { cartItems } = useCart();
+  const [placingOrder, setPlacingOrder] = useState(false);
+  const [error, setError] = useState(null);
+  const { cartItems, clearCart } = useCart();
+  const navigate = useNavigate();
+
+  const handlePlaceOrder = async () => {
+    setPlacingOrder(true);
+    setError(null);
+
+    try {
+      const orderItems = cartItems.map((item) => ({
+        productId: item.id,
+        quantity: item.quantity,
+      }));
+
+      const response = await axios.post("http://localhost:3000/orders", {
+        items: orderItems,
+      });
+
+      const orderId = response.data.order.id;
+
+      clearCart();
+
+      navigate(`/orders/${orderId}`);
+    } catch (error) {
+      console.error("Failed to place order:", error);
+      setError("Failed to place order. Please try again.");
+    } finally {
+      setPlacingOrder(false);
+    }
+  };
 
   const total = cartItems.reduce(
     (sum, item) => sum + Number(item.price) * item.quantity,
@@ -78,9 +110,14 @@ function CheckOut() {
             <span>₦{total.toLocaleString()}</span>
           </div>
 
-          <button className="cursor-pointer mt-6 w-full rounded-lg bg-black px-5 py-3 font-semibold text-white hover:bg-gray-800">
-            Place Order
+          <button
+            onClick={handlePlaceOrder}
+            disabled={placingOrder}
+            className="cursor-pointer mt-6 w-full rounded-lg bg-black px-5 py-3 font-semibold text-white hover:bg-gray-800"
+          >
+            {placingOrder ? "Placing Order..." : "Place Order"}
           </button>
+          {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
 
           <Link
             to="/cart"
