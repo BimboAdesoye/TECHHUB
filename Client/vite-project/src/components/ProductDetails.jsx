@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import UseFetch from "../hooks/UseFetch";
+import { useCart } from "../context/CartContext";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -9,6 +10,8 @@ const ProductDetails = () => {
     loading,
     error,
   } = UseFetch(`http://localhost:3000/products/${id}`);
+
+  const { addToCart } = useCart();
 
   if (loading) {
     return <p>Loading product...</p>;
@@ -42,7 +45,10 @@ const ProductDetails = () => {
             ₦{Number(product.price).toLocaleString()}
           </p>
 
-          <button className="mt-8 rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800">
+          <button
+            onClick={() => addToCart(product)}
+            className="cursor-pointer mt-8 w-full sm:w-auto rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800"
+          >
             Add to Cart
           </button>
         </div>
